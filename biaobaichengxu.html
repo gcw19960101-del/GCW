@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>💖 Yêu Em 💖 - 3D旋转情话</title>
     <style>
-        /* 全局重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background-color: #000;
             color: #fff;
@@ -20,8 +18,7 @@
             overflow: hidden;
             position: relative;
         }
-
-        /* ===== 开场玫瑰花 + 心形 ===== */
+        /* 开场玫瑰花 + 心形 */
         #rose-overlay {
             position: fixed;
             top: 0;
@@ -37,7 +34,6 @@
             pointer-events: none;
             animation: fadeOut 1s ease forwards 4s;
         }
-
         .rose-container {
             position: relative;
             display: flex;
@@ -47,10 +43,9 @@
             width: 100%;
             height: 100%;
         }
-
         .heart-bg {
             position: absolute;
-            font-size: min(80vw, 15rem); /* 动态缩放，最大15rem */
+            font-size: clamp(8rem, 40vw, 15rem);
             color: #ff3366;
             opacity: 0;
             filter: drop-shadow(0 0 50px #ff3366);
@@ -60,29 +55,26 @@
             pointer-events: none;
             text-shadow: 0 0 100px #ff3366;
         }
-
         .rose {
-            font-size: min(20vw, 4rem);
+            font-size: clamp(2rem, 15vw, 4rem);
             animation: roseBloom 3.5s ease-in-out forwards;
             filter: drop-shadow(0 0 20px #ff3366);
             position: relative;
             z-index: 2;
             transform-origin: center center;
         }
-
         .rose-particle {
             position: absolute;
             color: #ff99cc;
-            font-size: min(8vw, 2rem);
+            font-size: 1.5rem;
             opacity: 0;
             animation: roseParticles 3s ease-out forwards;
             pointer-events: none;
             z-index: 3;
         }
-
         .rose-text {
-            margin-top: 5vh;
-            font-size: min(6vw, 1.5rem);
+            margin-top: 20px;
+            font-size: clamp(1rem, 5vw, 1.5rem);
             color: #ff99cc;
             text-shadow: 0 0 20px #ff3366;
             letter-spacing: 4px;
@@ -93,7 +85,6 @@
             text-align: center;
             padding: 0 10px;
         }
-
         @keyframes heartBloom {
             0% { transform: scale(0) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 0 #ff3366); }
             15% { transform: scale(1.5) rotate(5deg); opacity: 0.3; filter: drop-shadow(0 0 50px #ff3366); }
@@ -103,7 +94,6 @@
             80% { transform: scale(2) rotate(0deg); opacity: 0.4; filter: drop-shadow(0 0 60px #ff3366); }
             100% { transform: scale(0.5) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 20px #ff3366); }
         }
-
         @keyframes roseBloom {
             0% { transform: scale(0.2) rotate(-30deg); opacity: 0; filter: drop-shadow(0 0 10px #ff99cc); }
             20% { transform: scale(2) rotate(15deg); opacity: 0.5; filter: drop-shadow(0 0 50px #ff3366); }
@@ -113,23 +103,20 @@
             85% { transform: scale(1.5) rotate(0deg); opacity: 0.5; filter: drop-shadow(0 0 60px #ff3366); }
             100% { transform: scale(0.5) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 20px #ff3366); }
         }
-
         @keyframes roseParticles {
             0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
             20% { opacity: 1; }
             100% { transform: translate(var(--x, 200px), var(--y, -200px)) scale(0); opacity: 0; }
         }
-
         @keyframes fadeInText {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeOut {
             to { opacity: 0; visibility: hidden; }
         }
 
-        /* ===== 3D 场景容器 ===== */
+        /* 3D场景容器 */
         .scene {
             width: 100%;
             height: 100%;
@@ -137,7 +124,6 @@
             overflow: hidden;
             position: relative;
         }
-
         #rotate-container {
             width: 100%;
             height: 100%;
@@ -158,7 +144,6 @@
             z-index: 1;
             transform-style: preserve-3d;
         }
-
         .particle {
             position: absolute;
             white-space: nowrap;
@@ -166,27 +151,22 @@
             filter: drop-shadow(0 0 3px currentColor);
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
             backface-visibility: hidden;
-            font-size: clamp(0.8rem, 4vw, 1.5rem); /* 粒子字体自适应 */
         }
-
         .particle.symbol {
             animation: floatRotate 8s linear forwards;
         }
-
         .particle.text-particle {
-            font-size: clamp(0.7rem, 3.5vw, 1rem);
+            font-size: 0.8rem;
             animation: floatUp 8s linear forwards;
             color: #ffb6c1;
             text-shadow: 0 0 8px #ff69b4, 0 0 12px #ff1493;
         }
-
         @keyframes floatUp {
             0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 0.8; }
             100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
         }
-
         @keyframes floatRotate {
             0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
             10% { opacity: 1; }
@@ -207,34 +187,30 @@
             transform-style: preserve-3d;
             backface-visibility: hidden;
             pointer-events: none;
-            padding: 0 15px; /* 防止内容贴边 */
+            padding: 0 10px;
         }
-
         #main-content > * {
             pointer-events: auto;
         }
 
         /* 素鸳装饰 */
         .yuan-yang {
-            font-size: clamp(1.5rem, 6vw, 2rem);
+            font-size: clamp(1.2rem, 6vw, 1.8rem);
             letter-spacing: 0.5rem;
             color: #ffdab9;
             text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493;
-            margin-bottom: 2vh;
+            margin-bottom: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             transform: translateZ(20px);
             flex-wrap: wrap;
         }
-
         .yuan-yang span {
             animation: gentleFloat 3s ease-in-out infinite;
         }
-
         .yuan-yang span:nth-child(2) { animation-delay: 0.2s; }
-
         @keyframes gentleFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
@@ -243,25 +219,23 @@
         /* 情话卡片 */
         .message-card {
             text-align: center;
-            padding: 1rem 0.5rem;
+            padding: 0.3rem 1rem 0.2rem;
             max-width: 100%;
-            margin: 1vh 0;
+            width: 100%;
+            margin: 0 0 10px;
             position: relative;
             transform: translateZ(30px);
         }
-
         .heart-top, .heart-bottom {
-            font-size: clamp(2.5rem, 12vw, 4rem);
+            font-size: clamp(2rem, 12vw, 3.2rem);
             line-height: 1;
             display: inline-block;
             color: #ff3b6f;
             text-shadow: 0 0 30px #ff3b6f, 0 0 60px #ff3b6f;
             animation: heartFloat 2.5s ease-in-out infinite;
         }
-
         .heart-top { animation-delay: 0s; }
         .heart-bottom { animation-delay: 0.3s; }
-
         @keyframes heartFloat {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-8px) scale(1.1); }
@@ -269,7 +243,7 @@
 
         /* 中央情话文字 */
         .love-line {
-            font-size: clamp(1.3rem, 6vw, 2rem);
+            font-size: clamp(1.2rem, 6vw, 1.8rem);
             font-weight: bold;
             color: white;
             text-shadow: 
@@ -278,48 +252,44 @@
                 0 0 80px #ff3b6f,
                 2px 2px 0 #ff1493,
                 -2px -2px 0 #ff69b4;
-            margin: 0.5rem 0;
+            margin: 5px 0 8px;
             line-height: 1.4;
             word-break: break-word;
-            min-height: 3rem;
+            min-height: 2.8rem;
             position: relative;
             display: inline-block;
-            padding: 0 10px;
+            padding: 0 8px;
             max-width: 100%;
+            box-sizing: border-box;
         }
-
         .love-line.textPop {
             animation: textPop 0.4s ease-out;
         }
-
         @keyframes textPop {
             0% { opacity: 0; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* 环绕小星星 - 响应式调整位置 */
+        /* 环绕小星星位置微调 */
         .love-line::before, .love-line::after,
         .love-line .star-1, .love-line .star-2, .love-line .star-3,
         .love-line .star-4, .love-line .star-5, .love-line .star-6 {
             content: '✨';
             position: absolute;
             color: gold;
-            font-size: clamp(0.8rem, 4vw, 1.2rem);
+            font-size: 0.8rem;
             text-shadow: 0 0 10px #ffaa00;
             opacity: 0.7;
             animation: twinkle 3s infinite alternate;
         }
-
-        /* 动态定位，避免在小屏幕上跑出边界 */
-        .love-line::before { top: -1.5rem; left: -1rem; }
-        .love-line::after { bottom: -1.5rem; right: -1rem; }
-        .love-line .star-1 { top: -2rem; right: 0.5rem; }
-        .love-line .star-2 { bottom: -2rem; left: 0.5rem; }
-        .love-line .star-3 { top: 0.5rem; left: -2rem; }
-        .love-line .star-4 { top: 0.8rem; right: -2rem; }
-        .love-line .star-5 { bottom: -1rem; left: -1.5rem; }
-        .love-line .star-6 { bottom: -0.8rem; right: -1.8rem; }
-
+        .love-line::before { top: -15px; left: -10px; }
+        .love-line::after { bottom: -15px; right: -10px; }
+        .love-line .star-1 { top: -20px; right: 0px; }
+        .love-line .star-2 { bottom: -20px; left: 0px; }
+        .love-line .star-3 { top: 5px; left: -25px; }
+        .love-line .star-4 { top: 5px; right: -25px; }
+        .love-line .star-5 { bottom: -10px; left: -20px; }
+        .love-line .star-6 { bottom: -10px; right: -20px; }
         @keyframes twinkle {
             0% { opacity: 0.3; transform: scale(0.8); }
             100% { opacity: 1; transform: scale(1.2); }
@@ -327,59 +297,59 @@
 
         /* 双语情话区域 */
         .bilingual-box {
-            margin: 2vh 0 0;
-            max-width: 90%;
+            margin: 10px 0 5px;
+            max-width: 100%;
+            width: 100%;
             text-align: center;
             transform: translateZ(10px);
+            padding: 0 10px;
         }
-
         .vietnamese-text {
-            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            font-size: clamp(1.1rem, 5vw, 1.5rem);
             color: #ffb6c1;
             text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493;
-            margin-bottom: 0.5rem;
+            margin-bottom: 4px;
             line-height: 1.4;
             word-break: break-word;
             letter-spacing: 1px;
         }
-
         .chinese-text {
-            font-size: clamp(1rem, 4.5vw, 1.5rem);
+            font-size: clamp(1rem, 4.5vw, 1.3rem);
             color: #ffdab9;
             text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff4500;
             line-height: 1.4;
             word-break: break-word;
             letter-spacing: 1px;
             border-top: 1px dashed rgba(255, 51, 102, 0.5);
-            padding-top: 0.5rem;
-            margin-top: 0.3rem;
+            padding-top: 4px;
+            margin-top: 4px;
         }
 
         .footer {
             position: absolute;
-            bottom: 2vh;
-            left: 0;
-            width: 100%;
-            text-align: center;
+            bottom: 10px;
             z-index: 2;
-            font-size: clamp(0.7rem, 4vw, 1rem);
+            font-size: 0.7rem;
             color: #aaa;
-            letter-spacing: 0.2rem;
+            letter-spacing: 2px;
             border-top: 1px solid #ff3b6f;
-            padding-top: 0.8rem;
+            padding-top: 4px;
+            width: 90%;
+            text-align: center;
             text-transform: uppercase;
             font-weight: 300;
             opacity: 0.8;
             transform: translateZ(5px);
+            left: 5%;
         }
 
-        /* 针对极窄屏幕微调 */
-        @media (max-width: 360px) {
-            .love-line { font-size: 1.2rem; }
-            .heart-top, .heart-bottom { font-size: 2.5rem; }
-            .vietnamese-text { font-size: 1.1rem; }
+        /* 针对超小屏幕进一步调整 */
+        @media (max-width: 380px) {
+            .love-line { font-size: 1rem; }
+            .heart-top, .heart-bottom { font-size: 2rem; }
+            .vietnamese-text { font-size: 1rem; }
             .chinese-text { font-size: 0.9rem; }
-            .yuan-yang { font-size: 1.3rem; gap: 0.3rem; }
+            .yuan-yang { font-size: 1.2rem; gap: 0.2rem; }
         }
     </style>
 </head>
@@ -567,7 +537,6 @@
             let currentIndex = 0;
             function updateLoveMessage() {
                 loveMessageEl.textContent = vietnameseLines[currentIndex];
-                // 重新添加小星星
                 for (let i = 1; i <= 6; i++) {
                     const star = document.createElement('span');
                     star.className = `star-${i}`;
