@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>💖 Yêu Em 💖 - 3D旋转情话</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -18,7 +19,7 @@
             overflow: hidden;
             position: relative;
         }
-        /* ===== 开场玫瑰花 + 心形 (增强仪式感) ===== */
+        /* 开场玫瑰花 + 心形 */
         #rose-overlay {
             position: fixed;
             top: 0;
@@ -114,7 +115,7 @@
             to { opacity: 0; visibility: hidden; }
         }
 
-        /* ===== 3D 场景容器 ===== */
+        /* 3D 场景容器 */
         .scene {
             width: 100%;
             height: 100%;
@@ -196,11 +197,11 @@
             letter-spacing: 10px;
             color: #ffdab9;
             text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transform: translateZ(20px);
         }
         .yuan-yang span {
@@ -212,17 +213,17 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* 情话卡片 (无红色框) */
+        /* 情话卡片 */
         .message-card {
             text-align: center;
-            padding: 1rem 1.5rem 0.5rem;
+            padding: 0.8rem 1rem 0.3rem;
             max-width: 90%;
-            margin: 0 20px 20px;
+            margin: 0 10px 15px;
             position: relative;
             transform: translateZ(30px);
         }
         .heart-top, .heart-bottom {
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             line-height: 1;
             display: inline-block;
             color: #ff3b6f;
@@ -238,7 +239,7 @@
 
         /* 中央情话文字 */
         .love-line {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: white;
             text-shadow: 
@@ -247,13 +248,13 @@
                 0 0 80px #ff3b6f,
                 2px 2px 0 #ff1493,
                 -2px -2px 0 #ff69b4;
-            margin: 5px 0 10px;
+            margin: 5px 0 8px;
             line-height: 1.4;
             word-break: break-word;
-            min-height: 3rem;
+            min-height: 2.8rem;
             position: relative;
             display: inline-block;
-            padding: 0 10px;
+            padding: 0 8px;
         }
         .love-line.textPop {
             animation: textPop 0.4s ease-out;
@@ -288,43 +289,98 @@
             100% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* ===== 优化后的双语情话区域 (无卡片背景) ===== */
+        /* 双语情话区域 */
         .bilingual-box {
-            margin: 30px 20px 0;
-            max-width: 500px;
+            margin: 20px 15px 0;
+            max-width: 90%;
             text-align: center;
             transform: translateZ(10px);
         }
         .vietnamese-text {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #ffb6c1;
             text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.4;
             word-break: break-word;
             letter-spacing: 1px;
         }
         .chinese-text {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #ffdab9;
             text-shadow: 0 0 10px #ff8c00, 0 0 20px #ff4500;
             line-height: 1.4;
             word-break: break-word;
             letter-spacing: 1px;
             border-top: 1px dashed rgba(255, 51, 102, 0.5);
-            padding-top: 8px;
-            margin-top: 5px;
+            padding-top: 6px;
+            margin-top: 4px;
+        }
+
+        /* 音乐控制栏 */
+        .music-control {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(5px);
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #ff3366;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.7);
+            font-size: 1rem;
+            color: white;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            max-width: 90%;
+            white-space: nowrap;
+        }
+        .music-toggle {
+            background: #ff3366;
+            border: none;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px #ff3366;
+            outline: none;
+            flex-shrink: 0;
+        }
+        .music-toggle:hover {
+            transform: scale(1.1);
+            background: #ff1a4f;
+        }
+        .music-toggle:active {
+            transform: scale(0.95);
+        }
+        .music-status {
+            font-size: 0.9rem;
+            color: #ff99cc;
+            text-shadow: 0 0 5px #ff3366;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .footer {
             position: absolute;
             bottom: 15px;
             z-index: 2;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #aaa;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             border-top: 1px solid #ff3b6f;
-            padding-top: 8px;
+            padding-top: 6px;
             width: 80%;
             text-align: center;
             text-transform: uppercase;
@@ -336,10 +392,17 @@
         }
 
         @media (max-width: 480px) {
-            .love-line { font-size: 1.2rem; }
-            .heart-top, .heart-bottom { font-size: 2.8rem; }
-            .vietnamese-text { font-size: 1.3rem; }
-            .chinese-text { font-size: 1.1rem; }
+            .love-line { font-size: 1.3rem; }
+            .heart-top, .heart-bottom { font-size: 2.5rem; }
+            .vietnamese-text { font-size: 1.2rem; }
+            .chinese-text { font-size: 1rem; }
+            .yuan-yang { font-size: 1.5rem; gap: 5px; }
+            .music-control { padding: 6px 15px; gap: 10px; bottom: 60px; }
+            .music-toggle { width: 40px; height: 40px; font-size: 1.1rem; }
+        }
+        @media (max-width: 360px) {
+            .love-line { font-size: 1.1rem; }
+            .music-control { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -358,26 +421,29 @@
         <div id="rotate-container">
             <div id="particles"></div>
             <div id="main-content">
-                <!-- 素鸳装饰 -->
                 <div class="yuan-yang">
                     <span>💕</span>
                     <span>素</span>
                     <span>鸳</span>
                     <span>💕</span>
                 </div>
-
-                <!-- 情话卡片 -->
                 <div class="message-card">
                     <div class="heart-top">❤️</div>
                     <div class="love-line" id="loveMessage"></div>
                     <div class="heart-bottom">❤️</div>
                 </div>
-
-                <!-- 双语情话展示区域（固定一句） -->
-                <div class="bilingual-box" id="bilingualBox">
+                <div class="bilingual-box">
                     <div class="vietnamese-text" id="vietnameseDisplay">Anh rất thích em</div>
                     <div class="chinese-text" id="chineseDisplay">我很喜欢妳</div>
                 </div>
+            </div>
+
+            <!-- 音乐控制栏 -->
+            <div class="music-control" id="musicControl">
+                <button class="music-toggle" id="musicToggle">
+                    <i class="fas fa-play" id="toggleIcon"></i>
+                </button>
+                <span class="music-status" id="musicStatus">点击播放音乐</span>
             </div>
         </div>
     </div>
@@ -453,7 +519,127 @@
             // 获取元素
             const particlesContainer = document.getElementById('particles');
             const loveMessageEl = document.getElementById('loveMessage');
+            const vietnameseDisplay = document.getElementById('vietnameseDisplay');
+            const chineseDisplay = document.getElementById('chineseDisplay');
             const rotateContainer = document.getElementById('rotate-container');
+            
+            // 音乐相关元素
+            const musicToggle = document.getElementById('musicToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const musicStatus = document.getElementById('musicStatus');
+
+            // ---------- Web Audio 合成音乐 ----------
+            let audioCtx = null;
+            let isPlaying = false;
+            let osc1, osc2, gainNode;
+
+            function initAudio() {
+                if (audioCtx) return; // 已经初始化
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                // 创建两个振荡器，模拟简单的和弦
+                osc1 = audioCtx.createOscillator();
+                osc2 = audioCtx.createOscillator();
+                gainNode = audioCtx.createGain();
+
+                osc1.type = 'sine';       // 正弦波，柔和
+                osc2.type = 'triangle';    // 三角波，温暖
+
+                osc1.frequency.value = 440; // A4
+                osc2.frequency.value = 554.37; // C#5，大三度
+
+                // 连接
+                osc1.connect(gainNode);
+                osc2.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                // 设置音量（0.2 避免太响）
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+
+                // 无限循环？我们需要持续播放，但振荡器只能播放一次，所以需要循环
+                // 更好的办法：让振荡器无限循环？可以用scriptProcessor，但简单起见，我们监听结束再启动
+                // 但为了简单，我们可以使用 setInterval 重新创建？但那样不优雅。
+                // 改用 setInterval 重置？会造成 click 声。不如直接播放一个循环的 buffer，但复杂。
+                // 这里采用最简单的方式：让振荡器一直运行，不停止，直到暂停时停止。
+                // 但振荡器一次只能播放一次，我们需要在暂停时停止，播放时重新创建。
+                // 我们可以在 play 时创建，pause 时停止。
+            }
+
+            function startMusic() {
+                if (!audioCtx) {
+                    initAudio();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume().then(() => {
+                        createOscillatorsAndStart();
+                    });
+                } else {
+                    createOscillatorsAndStart();
+                }
+            }
+
+            function createOscillatorsAndStart() {
+                if (osc1) {
+                    try { osc1.stop(); } catch(e) {}
+                }
+                if (osc2) {
+                    try { osc2.stop(); } catch(e) {}
+                }
+                osc1 = audioCtx.createOscillator();
+                osc2 = audioCtx.createOscillator();
+                gainNode = audioCtx.createGain();
+
+                osc1.type = 'sine';
+                osc2.type = 'triangle';
+                osc1.frequency.value = 440;
+                osc2.frequency.value = 554.37;
+
+                osc1.connect(gainNode);
+                osc2.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); // 稍小一点
+
+                osc1.start();
+                osc2.start();
+                isPlaying = true;
+                toggleIcon.className = 'fas fa-pause';
+                musicStatus.textContent = '播放中';
+            }
+
+            function stopMusic() {
+                if (osc1) {
+                    try {
+                        osc1.stop();
+                        osc2.stop();
+                    } catch(e) {}
+                }
+                isPlaying = false;
+                toggleIcon.className = 'fas fa-play';
+                musicStatus.textContent = '点击播放';
+                if (audioCtx && audioCtx.state !== 'closed') {
+                    audioCtx.suspend();
+                }
+            }
+
+            // 点击播放/暂停
+            musicToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isPlaying) {
+                    stopMusic();
+                } else {
+                    startMusic();
+                }
+            });
+
+            // 微信内自动播放处理（仍然需要用户手势才能启动，但我们可以尝试）
+            // 实际上 Web Audio 也必须由用户手势启动，所以我们保持点击启动。
+            // 但我们可以预先初始化 AudioContext，但不启动。
+            // 在页面加载时预创建 AudioContext（不启动），可以加快响应。
+            window.addEventListener('load', () => {
+                // 预创建 AudioContext，但不启动，避免 iOS 限制
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                // 挂起
+                audioCtx.suspend();
+            });
 
             // 生成玫瑰花粒子效果
             function createRoseParticles() {
@@ -525,7 +711,6 @@
             let currentIndex = 0;
             function updateLoveMessage() {
                 loveMessageEl.textContent = vietnameseLines[currentIndex];
-                // 重新添加小星星
                 for (let i = 1; i <= 6; i++) {
                     const star = document.createElement('span');
                     star.className = `star-${i}`;
