@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>💖 Yêu Em 💖 - 3D旋转双语情话</title>
+    <title>💖 Yêu Em 💖 - 3D旋转情话</title>
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
             align-items: center;
             z-index: 100;
             pointer-events: none;
-            animation: fadeOut 1s ease forwards 4s; /* 延长淡出时间 */
+            animation: fadeOut 1s ease forwards 4s;
         }
         .rose-container {
             position: relative;
@@ -43,10 +43,9 @@
             width: 100%;
             height: 100%;
         }
-        /* 心形元素（新增加） */
         .heart-bg {
             position: absolute;
-            font-size: 15rem; /* 基础大小，配合缩放实现巨大化 */
+            font-size: 15rem;
             color: #ff3366;
             opacity: 0;
             filter: drop-shadow(0 0 50px #ff3366);
@@ -85,101 +84,34 @@
             z-index: 2;
         }
         @keyframes heartBloom {
-            0% {
-                transform: scale(0) rotate(0deg);
-                opacity: 0;
-                filter: drop-shadow(0 0 0 #ff3366);
-            }
-            15% {
-                transform: scale(1.5) rotate(5deg);
-                opacity: 0.3;
-                filter: drop-shadow(0 0 50px #ff3366);
-            }
-            30% {
-                transform: scale(4) rotate(0deg);
-                opacity: 0.8;
-                filter: drop-shadow(0 0 100px #ff3366);
-            }
-            45% {
-                transform: scale(6) rotate(-5deg);
-                opacity: 1;
-                filter: drop-shadow(0 0 150px #ff3366);
-            }
-            60% {
-                transform: scale(5) rotate(3deg);
-                opacity: 0.8;
-                filter: drop-shadow(0 0 120px #ff3366);
-            }
-            80% {
-                transform: scale(2) rotate(0deg);
-                opacity: 0.4;
-                filter: drop-shadow(0 0 60px #ff3366);
-            }
-            100% {
-                transform: scale(0.5) rotate(0deg);
-                opacity: 0;
-                filter: drop-shadow(0 0 20px #ff3366);
-            }
+            0% { transform: scale(0) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 0 #ff3366); }
+            15% { transform: scale(1.5) rotate(5deg); opacity: 0.3; filter: drop-shadow(0 0 50px #ff3366); }
+            30% { transform: scale(4) rotate(0deg); opacity: 0.8; filter: drop-shadow(0 0 100px #ff3366); }
+            45% { transform: scale(6) rotate(-5deg); opacity: 1; filter: drop-shadow(0 0 150px #ff3366); }
+            60% { transform: scale(5) rotate(3deg); opacity: 0.8; filter: drop-shadow(0 0 120px #ff3366); }
+            80% { transform: scale(2) rotate(0deg); opacity: 0.4; filter: drop-shadow(0 0 60px #ff3366); }
+            100% { transform: scale(0.5) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 20px #ff3366); }
         }
         @keyframes roseBloom {
-            0% {
-                transform: scale(0.2) rotate(-30deg);
-                opacity: 0;
-                filter: drop-shadow(0 0 10px #ff99cc);
-            }
-            20% {
-                transform: scale(2) rotate(15deg);
-                opacity: 0.5;
-                filter: drop-shadow(0 0 50px #ff3366);
-            }
-            35% {
-                transform: scale(6) rotate(0deg);
-                opacity: 1;
-                filter: drop-shadow(0 0 100px #ff3366);
-            }
-            50% {
-                transform: scale(8) rotate(-5deg);
-                opacity: 1;
-                filter: drop-shadow(0 0 150px #ff3366);
-            }
-            65% {
-                transform: scale(4) rotate(5deg);
-                opacity: 0.8;
-                filter: drop-shadow(0 0 120px #ff3366);
-            }
-            85% {
-                transform: scale(1.5) rotate(0deg);
-                opacity: 0.5;
-                filter: drop-shadow(0 0 60px #ff3366);
-            }
-            100% {
-                transform: scale(0.5) rotate(0deg);
-                opacity: 0;
-                filter: drop-shadow(0 0 20px #ff3366);
-            }
+            0% { transform: scale(0.2) rotate(-30deg); opacity: 0; filter: drop-shadow(0 0 10px #ff99cc); }
+            20% { transform: scale(2) rotate(15deg); opacity: 0.5; filter: drop-shadow(0 0 50px #ff3366); }
+            35% { transform: scale(6) rotate(0deg); opacity: 1; filter: drop-shadow(0 0 100px #ff3366); }
+            50% { transform: scale(8) rotate(-5deg); opacity: 1; filter: drop-shadow(0 0 150px #ff3366); }
+            65% { transform: scale(4) rotate(5deg); opacity: 0.8; filter: drop-shadow(0 0 120px #ff3366); }
+            85% { transform: scale(1.5) rotate(0deg); opacity: 0.5; filter: drop-shadow(0 0 60px #ff3366); }
+            100% { transform: scale(0.5) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 20px #ff3366); }
         }
         @keyframes roseParticles {
-            0% {
-                transform: translate(0, 0) scale(0.5);
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--x, 200px), var(--y, -200px)) scale(0);
-                opacity: 0;
-            }
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(var(--x, 200px), var(--y, -200px)) scale(0); opacity: 0; }
         }
         @keyframes fadeInText {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+            to { opacity: 0; visibility: hidden; }
         }
 
         /* ===== 3D 场景容器 ===== */
@@ -190,7 +122,6 @@
             overflow: hidden;
             position: relative;
         }
-        /* 旋转容器（所有可旋转内容） */
         #rotate-container {
             width: 100%;
             height: 100%;
@@ -357,73 +288,9 @@
             100% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* 按钮区域 */
-        .button-section {
-            text-align: center;
-            margin: 15px 0;
-            width: 100%;
-            position: relative;
-            z-index: 10;
-            transform: translateZ(15px);
-        }
-        .section-title {
-            color: #ff99cc;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px #ff3366;
-        }
-        .button-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 0 15px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .love-button {
-            background: rgba(255, 51, 102, 0.2);
-            border: 2px solid #ff3366;
-            color: white;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 15px #ff3366;
-            backdrop-filter: blur(3px);
-            animation: buttonFloat 3s ease-in-out infinite;
-            pointer-events: auto;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .love-button:nth-child(2) { animation-delay: 0.2s; }
-        .love-button:nth-child(3) { animation-delay: 0.4s; }
-        .love-button:nth-child(4) { animation-delay: 0.6s; }
-        .love-button:nth-child(5) { animation-delay: 0.8s; }
-        .love-button:nth-child(6) { animation-delay: 1s; }
-        @keyframes buttonFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        .love-button:hover {
-            background: #ff3366;
-            transform: scale(1.1);
-            box-shadow: 0 0 30px #ff3366;
-        }
-        .love-button:active {
-            transform: scale(0.9) translateY(-2px);
-            background: #ff1a4f;
-            transition: transform 0.05s;
-        }
-
-        /* ===== 优化后的双语情话区域 (无卡片背景和边框) ===== */
+        /* ===== 优化后的双语情话区域 (无卡片背景) ===== */
         .bilingual-box {
-            margin: 20px 20px 0;
+            margin: 30px 20px 0;
             max-width: 500px;
             text-align: center;
             transform: translateZ(10px);
@@ -447,14 +314,6 @@
             border-top: 1px dashed rgba(255, 51, 102, 0.5);
             padding-top: 8px;
             margin-top: 5px;
-        }
-        /* 切换动画 */
-        .vietnamese-text.fade-in, .chinese-text.fade-in {
-            animation: fadeInScale 0.4s ease-out;
-        }
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
         }
 
         .footer {
@@ -481,15 +340,13 @@
             .heart-top, .heart-bottom { font-size: 2.8rem; }
             .vietnamese-text { font-size: 1.3rem; }
             .chinese-text { font-size: 1.1rem; }
-            .love-button { width: 55px; height: 55px; font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
-    <!-- 开场玫瑰花 + 心形动画（增强仪式感） -->
+    <!-- 开场玫瑰花 + 心形动画 -->
     <div id="rose-overlay">
         <div class="rose-container" id="roseContainer">
-            <!-- 新增的巨大心形背景 -->
             <div class="heart-bg">❤️</div>
             <div class="rose" id="rose">🌹</div>
             <div class="rose-text">Em là đóa hồng của anh</div>
@@ -516,16 +373,10 @@
                     <div class="heart-bottom">❤️</div>
                 </div>
 
-                <!-- 中越双语情话按钮区域 -->
-                <div class="button-section">
-                    <div class="section-title">✦ 点击心形获取双语情话 ✦</div>
-                    <div class="button-grid" id="buttonGrid"></div>
-                </div>
-
-                <!-- 优化后的双语情话展示区域（无卡片背景） -->
+                <!-- 双语情话展示区域（固定一句） -->
                 <div class="bilingual-box" id="bilingualBox">
-                    <div class="vietnamese-text" id="vietnameseDisplay">Anh yêu em.</div>
-                    <div class="chinese-text" id="chineseDisplay">我爱你。</div>
+                    <div class="vietnamese-text" id="vietnameseDisplay">Anh rất thích em</div>
+                    <div class="chinese-text" id="chineseDisplay">我很喜欢妳</div>
                 </div>
             </div>
         </div>
@@ -535,7 +386,7 @@
 
     <script>
         (function() {
-            // ---------- 纯净越南语情话列表 (100句) ----------
+            // ---------- 越南语情话列表 (100句) ----------
             const vietnameseLines = [
                 "Anh yêu em.", "Em là tất cả của anh.", "Anh không sống được thiếu em.",
                 "Em làm trái tim anh rung động.", "Anh thích em từ cái nhìn đầu tiên.",
@@ -584,20 +435,6 @@
                 "Anh muốn cùng em mọi khoảnh khắc.", "Em là tình yêu của đời anh, mãi mãi."
             ];
 
-            // ---------- 中越双语情话库 ----------
-            const bilingualLoveLines = [
-                { viet: "Anh rất thích em", chinese: "我很喜欢妳" }, 
-                { viet: "Em là một nửa của đời anh", chinese: "妳是我生命中的另一半" }, 
-                { viet: "Anh đã mê em rồi", chinese: "我迷上你了" }, 
-                { viet: "Em là người duy nhất của anh", chinese: "你就是我的唯一" }, 
-                { viet: "Em là động lực cho anh trở thành người tốt hơn", chinese: "你让我想要成为更好的人" }, 
-                { viet: "Chúng ta sẽ cùng nhau già đi em nhé", chinese: "我想要和你一起慢慢变老" }, 
-                { viet: "Em mãi mãi là duy nhất trong trái tim anh", chinese: "妳永远是我心中的唯一" }, 
-                { viet: "Con yêu mẹ nhiều lắm", chinese: "我爱你，妈妈" }, 
-                { viet: "Em làm anh trẻ ra nhiều", chinese: "妳让我觉得我变年轻了" }, 
-                { viet: "Chúng ta đến với nhau nhé", chinese: "我们在一起吧" } 
-            ];
-
             // ---------- 粒子符号 ----------
             const symbols = [
                 '❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎',
@@ -616,12 +453,9 @@
             // 获取元素
             const particlesContainer = document.getElementById('particles');
             const loveMessageEl = document.getElementById('loveMessage');
-            const vietnameseDisplay = document.getElementById('vietnameseDisplay');
-            const chineseDisplay = document.getElementById('chineseDisplay');
-            const buttonGrid = document.getElementById('buttonGrid');
             const rotateContainer = document.getElementById('rotate-container');
 
-            // 生成玫瑰花粒子效果（增加粒子数量）
+            // 生成玫瑰花粒子效果
             function createRoseParticles() {
                 const roseContainer = document.getElementById('roseContainer');
                 for (let i = 0; i < 20; i++) {
@@ -646,43 +480,6 @@
                 star.textContent = '✨';
                 loveMessageEl.appendChild(star);
             }
-
-            // 创建按钮
-            for (let i = 0; i < 6; i++) {
-                const button = document.createElement('div');
-                button.className = 'love-button';
-                button.textContent = '❤️';
-                button.dataset.index = i;
-                buttonGrid.appendChild(button);
-            }
-
-            // 按钮点击事件
-            buttonGrid.addEventListener('click', function(e) {
-                const button = e.target.closest('.love-button');
-                if (!button) return;
-                const index = parseInt(button.dataset.index) % bilingualLoveLines.length;
-                const line = bilingualLoveLines[index];
-                
-                vietnameseDisplay.textContent = line.viet;
-                chineseDisplay.textContent = line.chinese;
-                
-                vietnameseDisplay.classList.add('fade-in');
-                chineseDisplay.classList.add('fade-in');
-                
-                setTimeout(() => {
-                    vietnameseDisplay.classList.remove('fade-in');
-                    chineseDisplay.classList.remove('fade-in');
-                }, 400);
-                
-                button.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    button.style.transform = '';
-                }, 150);
-            });
-
-            // 默认显示第一句双语情话
-            vietnameseDisplay.textContent = bilingualLoveLines[0].viet;
-            chineseDisplay.textContent = bilingualLoveLines[0].chinese;
 
             // 创建粒子
             function createParticle() {
